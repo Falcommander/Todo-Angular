@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1>Todo List</h1>
+    <p>Une TodoList complète, enfin un peu !</p>
+  </div>
+
+  <app-ajout-tache></app-ajout-tache>
+  <table class="table">
+    <tr *ngFor="let tache of this.persistance.get('taches'); let i=index"
+        [ngClass]="{'table-danger': tache.priorite == 'haute',
+                   'table-warning': tache.priorite == 'moyenne',
+                   'fait': tache.estValide}">
+      <td (click)="onSelect(tache)" style="cursor: pointer;"><i class="bi bi-pencil"></i></td>
+      <td>{{tache.libelle}}</td>
+      <td><i class="bi bi-calendar-event"></i> {{tache.date | date: "dd/MM/yyyy"}}</td>
+      <td style="cursor: pointer;" (click)="marquerTacheFaite(i)"><i class="bi bi-check"></i></td>
+      <td style="cursor: pointer;" (click)="supprimerTache(i)"><i class="bi bi-trash"></i></td>
+    </tr>
+  </table>
+  <app-modif-tache [tache]="tacheSelectionnee"></app-modif-tache>
+</div>
+

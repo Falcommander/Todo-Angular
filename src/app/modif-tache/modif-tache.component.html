@@ -1,0 +1,36 @@
+<div *ngIf="tache">
+
+  <hr>
+  <!-- Titre -->
+  <div class="mb-3">
+    <label for="titre" class="form-label">Titre</label>
+    <input type="text" class="form-control" [(ngModel)]="tache.libelle" id="titre">
+  </div>
+
+  <!-- Priorité -->
+  <div class="mb-3">
+    <label for="priorite" class="form-label">Priorité</label>
+    <select class="form-control" [(ngModel)]="tache.priorite" id="priorite">
+      <option *ngFor="let p of priorites" [value]="p">{{p}}</option>
+    </select>
+  </div>
+
+  <!-- Fait -->
+  <div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" id="fait" [(ngModel)]="tache.estValide" [checked]="tache.estValide">
+    <label class="form-check-label" for="fait">Fait ?</label>
+  </div>
+
+  <!-- Description -->
+  <div class="mb-3">
+    <label for="description" class="form-label">Description</label>
+    <textarea class="form-control" [(ngModel)]="tache.description" id="description" rows="3"></textarea>
+  </div>
+
+  <!--
+      <div class="mb-3">
+        <button type="submit" class="btn btn-primary" (click)="modifierTodo()">OK</button>
+      </div>
+   -->
+
+</div>
